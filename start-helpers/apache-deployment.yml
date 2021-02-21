@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache
+spec:
+  selector:
+    matchLabels:
+      run: apache
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: apache
+    spec:
+      containers:
+        - name: apache
+          image: zachroofsec/trivy-apache
+          ports:
+            - containerPort: 443
+          volumeMounts:
+          - mountPath: /host
+            name: host-volume
+            readOnly: true
+      volumes:
+      - name: host-volume
+        hostPath:
+          path: /
