@@ -17,4 +17,9 @@ go get -v github.com/eth0izzle/shhgit &&
 wget https://raw.githubusercontent.com/eth0izzle/shhgit/3ce441853d999dacf6e20e59b116c135dcdd0c68/config.yaml -O "${SSHGIT_CONFIG_PATH}"
 
 ## Look for credentials within /host
-shhgit --config-path /tmp -local /host
+
+# Can be slow
+#shhgit --config-path /tmp -local /host
+
+# To make the demo go faster, we're going to cheat a only look within a subdirectory of /host
+shhgit --config-path /tmp -local /host/.docker
