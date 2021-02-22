@@ -18,8 +18,5 @@ wget https://raw.githubusercontent.com/eth0izzle/shhgit/3ce441853d999dacf6e20e59
 
 ## Look for credentials within /host
 
-# Can be slow
-#shhgit --config-path /tmp -local /host
-
-# To make the demo go faster, we're going to cheat a only look within a subdirectory of /host
+# To make the demo go faster, we're going to cheat by only searching a subdirectory of /host
 shhgit --config-path /tmp -local /host/.docker
