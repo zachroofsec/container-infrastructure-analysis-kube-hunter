@@ -16,7 +16,7 @@
 # +--------------------+
 
 # Redirecting /dev/null activates "non-interactive" installation of brew
-bash install-helpers/install-brew.sh < /dev/null
+bash install-helpers/brew.sh < /dev/null
 
 ## Setup paths for `brew install`
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)

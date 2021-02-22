@@ -17,7 +17,7 @@ minikube start \
     --delete-on-failure \
     --driver docker \
     --kubernetes-version v1.20.0 \
-    --memory 2g \
+    --memory 4g \
     --extra-config=kubelet.authorization-mode=AlwaysAllow \
     --extra-config=kubelet.anonymous-auth=True \
     --extra-config=apiserver.enable-admission-plugins=PodSecurityPolicy \
