@@ -1,0 +1,8 @@
+format = """
+\\[ $directory\\] \\$ 
+
+"""
+
+[directory]
+read_only = ""
+format = "[$path]($style) "

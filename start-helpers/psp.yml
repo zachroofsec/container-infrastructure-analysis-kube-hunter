@@ -1,6 +1,12 @@
-# Least restrictive Pod Security Policy
-# (Same as not having one)
+# +--------------------+
+# Permissive Pod Security Policy (psp)
+# +--------------------+
+
+# (When psps aren't used, this is what is allowed in Kubernetes)
+# Helps us understand the syntax
 # https://kubernetes.io/docs/concepts/policy/pod-security-policy/#example-policies
+
+#---
 #apiVersion: policy/v1beta1
 #kind: PodSecurityPolicy
 #metadata:
@@ -29,6 +35,13 @@
 #  fsGroup:
 #    rule: 'RunAsAny'
 #---
+
+# +--------------------+
+# AUTH POLICIES
+# +--------------------+
+
+# Auth policies that allow psps to execute
+
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -53,6 +66,17 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
   name: system:serviceaccounts
 ---
+
+# +--------------------+
+# PSP
+# +--------------------+
+
+# Generated via:
+# kubectl advise-psp inspect --namespace default
+
+# Outputs a Pod Security Policy that allows our CURRENT infrastructure to run
+# Note the allowedHostPaths and the hostPath volume (this allowed the docker credentials to be exfiltrated)
+
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:

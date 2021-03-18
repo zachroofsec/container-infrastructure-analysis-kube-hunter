@@ -3,24 +3,29 @@ Vagrant.configure("2") do |config|
         vb.gui = false
         vb.memory = "5192"
     end
+    
+    config.vm.synced_folder ".", "/home/vagrant/kube-hunter-tutorial", type:"virtualbox"
 
     # For "final" demo environment that learner will use
-    config.vm.define "demo", primary: true do |demo|
-        config.vm.box = "zachroofsec/kube-hunter"
-        config.vm.box_version = "1.0.0"
-        config.vm.synced_folder ".", "/home/vagrant/tutorial-kube-hunter"
+    config.vm.define "demo_kube_hunter", primary: true do |demo|
+        demo.vm.box = "zachroofsec/kube-hunter-tutorial"
+        demo.vm.box_version = "1.0.0"
+        demo.ssh.forward_agent = true
     end
 
     # For demo environment (while creating tutorial)
-    config.vm.define "demo-inprog", autostart: false do |demo|
-        config.vm.box = "kalilinux/rolling"
-        config.vm.box_version = "2020.3.0"
+    config.vm.define "demo_inprog_kube_hunter", autostart: false do |demo_inprog|
+        demo_inprog.vm.box = "kalilinux/rolling"
+        demo_inprog.vm.box_version = "2021.1.0"
+        demo_inprog.ssh.forward_agent = true
+        demo_inprog.vm.provision "shell", path: "install-helpers/prompt-orchestrator.sh", privileged: true
     end
 
     # For test environment
-    config.vm.define "test", autostart: false do |test|
-        config.vm.box = "kalilinux/rolling"
-        config.vm.box_version = "2020.3.0"
-        config.vm.synced_folder ".", "/home/vagrant/tutorial-kube-hunter"
+    config.vm.define "test_kube_hunter", autostart: false do |test|
+        test.vm.box = "kalilinux/rolling"
+        test.vm.box_version = "2021.1.0"
+        test.ssh.forward_agent = true
+        test.vm.provision "shell", path: "install-helpers/prompt-orchestrator.sh", privileged: true
     end
 end

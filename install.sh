@@ -1,12 +1,11 @@
 #!/bin/bash
-# set -x
 
 # +--------------------+
 # GENERAL
 # +--------------------+
 
-## Installs dependencies for the attack simulation environment
-## Tested on FRESH install of Kali Linux 2020.3.0 on 2/2021
+## Installs dependencies for the demo environment
+## Tested on FRESH install of Kali Linux 2021.1.0 on 3/2021
 
 # NOTE: This script is NOT guaranteed to work into the future
 # (packages can be removed from package repositories)
@@ -21,10 +20,10 @@ bash install-helpers/brew.sh < /dev/null
 ## Setup paths for `brew install`
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
-# minikube: For running the Kubernetes cluster
+# minikube: For running the local Kubernetes cluster
 # k9s: Helps us inspect the Kubernetes cluster
 # krew: Will allow us to install kubectl plugins
-# aquasecurity/trivy/trivy: Allows us to inspect vulnerable docker images
+# trivy: Allows us to inspect vulnerable docker images
 # nmap: Allows us to search for host vulnerabilities
 # yq: For pretty printing yaml
 brew install minikube \
@@ -37,6 +36,7 @@ brew install minikube \
 # +--------------------+
 # APT INSTALLS
 # +--------------------+
+
 sudo apt-get -y update &&\
     sudo apt-get -y install docker.io
 
@@ -99,6 +99,7 @@ echo "----------------------------------------------------------------"
 echo "Installation finished!"
 echo 'You must run `bash start.sh` to start the simulation environment'
 echo "NOTE: Inspecting start.sh can spoil the tutorial's investigation"
-echo 'IMPORTANT: You MUST now log out (and back in) for the installation'
-echo 'changes to take effect!'
+echo 'IMPORTANT: You MUST now run the following command for the'
+echo 'changes to take effect:'
+echo "source $BASHRC_LOCATION"
 echo "----------------------------------------------------------------"
