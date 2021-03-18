@@ -99,7 +99,5 @@ echo "----------------------------------------------------------------"
 echo "Installation finished!"
 echo 'You must run `bash start.sh` to start the simulation environment'
 echo "NOTE: Inspecting start.sh can spoil the tutorial's investigation"
-echo 'IMPORTANT: You MUST now run the following command for the'
-echo 'changes to take effect:'
-echo "source $BASHRC_LOCATION"
+echo 'IMPORTANT: You MUST now log out and log back into the shell'
 echo "----------------------------------------------------------------"

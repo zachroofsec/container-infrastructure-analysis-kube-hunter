@@ -26,8 +26,10 @@
     + There might be problems if package names change into the future
 2. `git clone https://github.com/zachroofsec/kube-hunter-tutorial.git && cd kube-hunter-tutorial`
 3. `bash install.sh`
-4. `source $HOME/.bashrc`
-5. `bash start.sh`
+4. `exit`
+    + Log out of the shell
+5. Open a new shell session
+6. `cd kube-hunter-tutorial && bash start.sh`
 
 # Special Thanks
 
