@@ -14,8 +14,11 @@
 # BREW INSTALLS
 # +--------------------+
 
+# Get parent dir path
+PARENT_DIR_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
 # Redirecting /dev/null activates "non-interactive" installation of brew
-bash install-helpers/brew.sh < /dev/null
+bash "$PARENT_DIR_PATH/install-helpers/brew.sh" < /dev/null
 
 ## Setup paths for `brew install`
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -93,7 +96,7 @@ sudo usermod -aG docker $USER
 # Docker configurations for Kubernetes environment
 DOCKER_CONFIGS="${HOME}/.minikube/files/.docker"
 mkdir -p "${DOCKER_CONFIGS}" &&\
-    cp install-helpers/config.json "${DOCKER_CONFIGS/config.json}"
+    cp "$PARENT_DIR_PATH/install-helpers/config.json" "${DOCKER_CONFIGS/config.json}"
 
 echo "----------------------------------------------------------------"
 echo "Installation finished!"

@@ -7,6 +7,16 @@
 # Starts the demo environment (in Kubernetes)
 
 # +--------------------+
+# MISC
+# +--------------------+
+
+# Get parent dir path
+PARENT_DIR_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+# Allow commands (installed by brew) to be called
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+# +--------------------+
 # MINIKUBE
 # +--------------------+
 
@@ -30,10 +40,10 @@ minikube start \
 echo "Applying Kubernetes configurations"
 
 ## Apply PERMISSIVE Pod Security Policy so Apache can be created
-kubectl apply -f start-helpers/psp.yml > /dev/null 2>&1
+kubectl apply -f "$PARENT_DIR_PATH/start-helpers/psp.yml" > /dev/null 2>&1
 
-kubectl apply -f start-helpers/apache-deployment.yml \
-        -f start-helpers/apache-service.yml
+kubectl apply -f "$PARENT_DIR_PATH/start-helpers/apache-deployment.yml" \
+        -f "$PARENT_DIR_PATH/start-helpers/apache-service.yml"
 
 # +--------------------+
 # MISSION

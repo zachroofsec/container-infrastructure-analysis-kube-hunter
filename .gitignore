@@ -114,3 +114,4 @@ fabric.properties
 # Custom
 /av
 .vagrant/
+*.box

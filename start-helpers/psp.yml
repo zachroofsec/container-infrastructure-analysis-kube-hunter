@@ -1,42 +1,4 @@
 # +--------------------+
-# Permissive Pod Security Policy (psp)
-# +--------------------+
-
-# (When psps aren't used, this is what is allowed in Kubernetes)
-# Helps us understand the syntax
-# https://kubernetes.io/docs/concepts/policy/pod-security-policy/#example-policies
-
-#---
-#apiVersion: policy/v1beta1
-#kind: PodSecurityPolicy
-#metadata:
-#  name: default
-#  annotations:
-#    seccomp.security.alpha.kubernetes.io/allowedProfileNames: '*'
-#spec:
-#  privileged: true
-#  allowPrivilegeEscalation: true
-#  allowedCapabilities:
-#  - '*'
-#  volumes:
-#  - '*'
-#  hostNetwork: true
-#  hostPorts:
-#  - min: 0
-#    max: 65535
-#  hostIPC: true
-#  hostPID: true
-#  runAsUser:
-#    rule: 'RunAsAny'
-#  seLinux:
-#    rule: 'RunAsAny'
-#  supplementalGroups:
-#    rule: 'RunAsAny'
-#  fsGroup:
-#    rule: 'RunAsAny'
-#---
-
-# +--------------------+
 # AUTH POLICIES
 # +--------------------+
 
@@ -68,14 +30,25 @@ subjects:
 ---
 
 # +--------------------+
-# PSP
+# PSP (Pod Security Policy)
 # +--------------------+
 
-# Generated via:
+# Needs:
+# 1. Enable the Pod Security Policy feature
+# 2. Write a Pod Security Policy
+
+# The Pod Security Policy (PSP) below was generated via:
 # kubectl advise-psp inspect --namespace default
 
-# Outputs a Pod Security Policy that allows our CURRENT infrastructure to run
-# Note the allowedHostPaths and the hostPath volume (this allowed the docker credentials to be exfiltrated)
+# For more context on the PSPs, review: 
+# https://kubernetes.io/docs/concepts/policy/pod-security-policy
+
+# advise-psp outputs a Pod Security Policy that allows our CURRENT pods to execute
+# advise-psp gives use a baseline to start from
+
+# Note the allowedHostPaths and the hostPath volume 
+# This allowed the Apache Pod access to ALL files on the Kubernetes node
+# (This allowed the Pod access to the Kubernetes Node's registry credentials)
 
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy

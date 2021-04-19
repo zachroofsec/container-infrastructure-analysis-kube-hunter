@@ -42,21 +42,25 @@
 
 ## Pluralsight Courses
 
-+ [Infrastructure Analysis with Trivy](https://app.pluralsight.com/library/courses/container-infrastructure-analysis-trivy/)
++ [Container Infrastructure Analysis with Trivy](https://app.pluralsight.com/library/courses/container-infrastructure-analysis-trivy/)
     + NOTE: Course dives deeper into Trivy (and Docker Registry tampering)
 
 ## Youtube
 
 + [DIY Pen-Testing for Your Kubernetes Cluster - Liz Rice, Aqua Security](https://www.youtube.com/watch?v=fVqCAUJiIn0)
++ [Securing your Kubernetes Delivery Pipelines with Notary and TUF](https://www.youtube.com/watch?v=JK70k_B87mw) 
 
 ## Blogs/Documentation
 
-+ [kube-hunter documentation](https://github.com/aquasecurity/kube-hunter)
++ [Securing A Kubernetes Cluster](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/)
++ [kube-hunter README](https://github.com/aquasecurity/kube-hunter)
 + [kube-hunter website](https://kube-hunter.aquasec.com/)
++ [kube-hunter modules](https://github.com/aquasecurity/kube-hunter/tree/cdd9f9d43264ae04122407eaf98816254e829c77/kube_hunter/modules)
++ [kube-bench](https://github.com/aquasecurity/kube-bench)
 + [kubeletctl](https://github.com/cyberark/kubeletctl)
 + [Trivy](https://github.com/aquasecurity/trivy)
 + [k9s](https://k9scli.io/)
-+ [Pod Security Policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)
++ [Pod Security Policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)
 + [Docker Image History Modification](https://www.justinsteven.com/posts/2021/02/14/docker-image-history-modification)
 + [shhgit](https://github.com/eth0izzle/shhgit)
 
