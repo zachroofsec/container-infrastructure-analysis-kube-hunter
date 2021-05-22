@@ -40,7 +40,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
 apt-get update && apt-get install -y git &&
-    wget https://storage.googleapis.com/golang/go1.11.1.linux-amd64.tar.gz -O "${GO_DOWNLOAD_PATH}" &&
+    wget https://storage.googleapis.com/golang/go1.16.2.linux-amd64.tar.gz -O "${GO_DOWNLOAD_PATH}" &&
     tar -C /usr/local -xzf "${GO_DOWNLOAD_PATH}" &&
     rm -rf "$GO_DOWNLOAD_PATH" &&
     mkdir -p "${GOPATH}"
